@@ -1,0 +1,29 @@
+Sky:
+    CMB: 
+        cmb: True
+        seed: 1
+        r: 0
+        Alens: 0.5
+    Foregrounds:
+        dust: True
+        dustmodel: 'd0'
+        sync: True
+        syncmodel: 's0'
+
+    nside: 128
+
+noise: True
+
+UWBTube1:
+    add: True
+    nrec: 1
+    central_nu: 130
+    bw: 80
+    raw_depth: 1
+
+UWBTube2:
+    add: True
+    nrec: 5
+    central_nu: 240
+    bw: 80
+    raw_depth: 1
