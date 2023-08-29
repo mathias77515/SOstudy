@@ -10,20 +10,28 @@ Sky:
         sync: True
         syncmodel: 's0'
 
-    nside: 128
+    nside: 64
+
+Spectrum:
+    lmin: 30
+    lmax: 100
+    dl: 15
 
 noise: True
 
 UWBTube1:
-    add: True
+    add: False
     nrec: 1
     central_nu: 130
     bw: 80
     raw_depth: 1
 
 UWBTube2:
-    add: True
+    add: False
     nrec: 5
     central_nu: 240
     bw: 80
     raw_depth: 1
+
+filename: 'mytest'
+foldername: 'test'

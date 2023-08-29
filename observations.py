@@ -36,21 +36,19 @@ class UWBTubes:
 
 class FrequencyObservations:
 
-    def __init__(self):
+    def __init__(self, seed):
 
         with open('params.yml', "r") as stream:
             self.params = yaml.safe_load(stream)
 
-        
-        #print(self.params)
+        self.seed = seed
         self.baseline_frequency = np.array([27.0, 39.0, 93.0, 145.0, 225.0, 280])
-        #self.baseline_depthi = np.array([35.0, 21.0, 2.6, 3.3, 6.3, 16.0])
         self.baseline_depthp = np.array([49.5, 29.7, 3.7, 4.7, 8.9, 22.6])
 
         ### Change here for BI tubes
         self.nus, self.depthp = self._combine_baseline_bi()#self.baseline_frequency.copy()
-        print(self.nus)
-        print(self.depthp)
+        #print(self.nus)
+        #print(self.depthp)
         #stop
         self.nfreqs = len(self.nus)
 
@@ -93,7 +91,7 @@ class FrequencyObservations:
         #mycls[1]=np.zeros(4000)
         #mycls[3]=np.zeros(4000)
 
-        np.random.seed(self.params['Sky']['CMB']['seed'])
+        np.random.seed(self.seed)
 
         return hp.synfast(mycls, self.params['Sky']['nside'], verbose=False, new=True)
     def _get_Cl_cmb(self):
