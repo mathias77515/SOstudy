@@ -34,5 +34,5 @@ class CompSep:
     
     def run(self, m):
 
-        self.d = fgbuster.basic_comp_sep(self.comps, self.instrument, m, method='TNC', tol=1e-5)
+        self.d = fgbuster.basic_comp_sep(self.comps, self.instrument, m, method='TNC', tol=1e-18)
         

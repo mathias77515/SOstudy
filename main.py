@@ -3,9 +3,8 @@ from pipeline import *
 if __name__ == "__main__":
 
     ### Initialization
-    #pipeline = Pipeline()
-    pipeline = PipelineMC(2)
+    pipeline = Pipeline()
+
     ### Execution
-    #pipeline.main()
-    pipeline.run()
+    pipeline.main()
 
