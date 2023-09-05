@@ -22,7 +22,7 @@ class Spectrum:
         self.namaster.fsky = self.maskpix.astype(float).sum() / self.maskpix.size
         self.ell, _ = self.namaster.get_binning(self.params['Sky']['nside'])
 
-    def _get_spectrum(self, map1, map2):
+    def run(self, map1, map2):
         
         m1 = np.zeros((3, 12*self.params['Sky']['nside']**2))
         m2 = np.zeros((3, 12*self.params['Sky']['nside']**2))
@@ -30,11 +30,12 @@ class Spectrum:
         m1[1:, self.maskpix] = map1[:, self.maskpix].copy()
         m2[1:, self.maskpix] = map2[:, self.maskpix].copy()
 
-        leff, cls, _ = self.namaster.get_spectra(m1, map2=m2,
+        self.leff, self.cls, _ = self.namaster.get_spectra(m1, map2=m2,
                                  purify_e=False,
                                  purify_b=True,
                                  w=None,
                                  verbose=False,
                                  beam_correction=None,
                                  pixwin_correction=False)
-        return leff, cls[:, 2]
+        
+        self.clBB = self.cls[:, 2]
